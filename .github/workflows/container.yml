@@ -25,7 +25,8 @@ jobs:
 
             - name: Build
               run: npm run build
-              env: PRODUCTION_DOMAIN = ${{ secrets.PRODUCTION_DOMAIN }}
+              env:
+                  PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
             - name: ACTIONS_ALLOW_UNSECURE_COMMANDS
               run: echo 'ACTIONS_ALLOW_UNSECURE_COMMANDS=true' >> $GITHUB_ENV
