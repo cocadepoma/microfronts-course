@@ -6,7 +6,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
 // Mount function to start up the app
 const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
   const history = defaultHistory || createMemoryHistory({
-    initialEntries: [initialPath]
+    initialEntries: [initialPath],
   });
 
   if (onNavigate) {
@@ -17,6 +17,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 
   return {
     onParentNavigate({ pathname: nextPathName }) {
+      console.log(nextPathName);
       if (nextPathName !== history.location.pathname) {
         history.push(nextPathName);
       }
@@ -27,7 +28,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 // If we are in development and in insolation
 if (process.env.NODE_ENV === 'development') {
   // Mount the app
-  const el = document.querySelector('#marketing-dev-app');
+  const el = document.querySelector('#auth-dev-app');
   if (el) {
     mount(el, { defaultHistory: createBrowserHistory() });
   }
